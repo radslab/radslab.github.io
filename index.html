@@ -1,1 +1,868 @@
-<html><head><title>radslab</title></head><body><h1>Welcome to radslab GitHub Pages</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RADLabs — WordPress Theme Ecosystem</title>
+    <meta name="description"
+        content="RADYK is a modern, developer-first WordPress theme by RADLabs. Built for performance, security, and extensibility.">
+    <meta property="og:title" content="RADLabs — WordPress Theme Ecosystem">
+    <meta property="og:description" content="RADYK is a modern, developer-first WordPress theme by RADLabs.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rahendz.github.io/radlabs/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #09090b;
+            --bg-subtle: #18181b;
+            --bg-muted: #27272a;
+            --border: #27272a;
+            --border-hover: #3f3f46;
+            --text: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.12);
+            --accent-hover: #34d399;
+            --radius: 10px;
+            --radius-sm: 6px;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+            --max-w: 1100px;
+            --transition: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(9, 9, 11, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            height: 64px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-brand .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-cta {
+            font-size: 13px;
+            font-weight: 500;
+            padding: 7px 16px;
+            border-radius: var(--radius-sm);
+            background: var(--text);
+            color: var(--bg);
+            transition: opacity var(--transition), transform var(--transition);
+        }
+
+        .nav-cta:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+
+        .nav-cta:active {
+            transform: translateY(0);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 640px;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 16px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            letter-spacing: -0.035em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            max-width: 480px;
+            margin-bottom: 36px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            background: var(--accent);
+            color: #000;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-sans);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.25);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            transition: color var(--transition), border-color var(--transition), transform var(--transition);
+            cursor: pointer;
+            font-family: var(--font-sans);
+        }
+
+        .btn-secondary:hover {
+            color: var(--text);
+            border-color: var(--border-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        /* ===== SECTION COMMON ===== */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        .section-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 520px;
+            line-height: 1.6;
+        }
+
+        /* ===== PRODUCT CARD ===== */
+        .product {
+            border-top: 1px solid var(--border);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .product-card {
+            padding: 32px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: border-color var(--transition), transform var(--transition);
+            background: var(--bg-subtle);
+        }
+
+        .product-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .product-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            background: var(--accent-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .product-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .product-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .product-card .card-link {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: gap var(--transition);
+        }
+
+        .product-card:hover .card-link {
+            gap: 8px;
+        }
+
+        .product-card .card-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: var(--bg-muted);
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .product-card .card-tag.active {
+            background: var(--accent-dim);
+            color: var(--accent);
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            border-top: 1px solid var(--border);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            margin-top: 48px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .feature-item {
+            padding: 28px;
+            background: var(--bg);
+            transition: background var(--transition);
+        }
+
+        .feature-item:hover {
+            background: var(--bg-subtle);
+        }
+
+        .feature-item h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-item p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        /* ===== CODE PREVIEW ===== */
+        .code-section {
+            border-top: 1px solid var(--border);
+        }
+
+        .code-block {
+            margin-top: 40px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg);
+        }
+
+        .code-header span {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .code-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--bg-muted);
+        }
+
+        .code-body {
+            padding: 24px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            overflow-x: auto;
+        }
+
+        .code-body .kw {
+            color: var(--accent);
+        }
+
+        .code-body .fn {
+            color: #e879f9;
+        }
+
+        .code-body .str {
+            color: #fbbf24;
+        }
+
+        .code-body .cmt {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .code-body .var {
+            color: #60a5fa;
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-left {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--text-muted);
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--text-secondary);
+        }
+
+        /* ===== FADE-IN ANIMATION ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 80ms;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 160ms;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 240ms;
+        }
+
+        /* ===== MOBILE ===== */
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: rgba(9, 9, 11, 0.95);
+                backdrop-filter: blur(12px);
+                padding: 24px;
+                gap: 20px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero {
+                padding-top: 120px;
+                padding-bottom: 60px;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* ===== REDUCED MOTION ===== */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">
+                <span class="dot"></span>
+                RADLabs
+            </a>
+            <button class="mobile-menu" onclick="document.querySelector('.nav-links').classList.toggle('open')"
+                aria-label="Toggle menu">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#product">Product</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="https://rahendz.github.io/radlabs/extensions/">Extensions</a></li>
+                <li><a href="https://github.com/rahendz/radlabs" class="nav-cta">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-eyebrow">WordPress Theme</div>
+                <h1>Build fast.<br>Ship secure.</h1>
+                <p>RADYK is a developer-first WordPress theme built for performance, security, and extensibility. No
+                    bloat. No compromise.</p>
+                <div class="hero-actions">
+                    <a href="https://github.com/rahendz/radlabs" class="btn-primary">
+                        Get Started
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <a href="https://rahendz.github.io/radlabs/extensions/" class="btn-secondary">Browse Extensions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT -->
+    <section class="product" id="product">
+        <div class="container">
+            <div class="section-label reveal">Product</div>
+            <h2 class="section-title reveal reveal-delay-1">The RADYK Ecosystem</h2>
+            <p class="section-desc reveal reveal-delay-2">A modular WordPress theme with a growing extension library.
+                Pick what you need, skip what you don't.</p>
+
+            <div class="product-grid">
+                <div class="product-card reveal reveal-delay-1">
+                    <div class="card-tag active">Core</div>
+                    <div class="product-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 2L2 6v8l8 4 8-4V6l-8-4z" stroke="currentColor" stroke-width="1.5"
+                                stroke-linejoin="round" />
+                            <path d="M2 6l8 4m0 0l8-4m-8 4v8" stroke="currentColor" stroke-width="1.5"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3>RADYK Theme</h3>
+                    <p>Modern WordPress theme with clean architecture, built-in security, and developer-friendly hooks.
+                        PHP 8.2+, WordPress 6.0+.</p>
+                    <a href="https://github.com/rahendz/radlabs" class="card-link">Learn more <span
+                            aria-hidden="true">&rarr;</span></a>
+                </div>
+
+                <div class="product-card reveal reveal-delay-2">
+                    <div class="card-tag">Coming Soon</div>
+                    <div class="product-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <rect x="2" y="2" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                            <rect x="11" y="2" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                            <rect x="2" y="11" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5" />
+                            <rect x="11" y="11" width="7" height="7" rx="1.5" stroke="currentColor"
+                                stroke-width="1.5" />
+                        </svg>
+                    </div>
+                    <h3>Extensions</h3>
+                    <p>Modular add-ons that extend RADYK's functionality. Browse, install, and manage from the WordPress
+                        admin. Zero server dependency.</p>
+                    <a href="https://rahendz.github.io/radlabs/extensions/" class="card-link">Browse directory <span
+                            aria-hidden="true">&rarr;</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-label reveal">Features</div>
+            <h2 class="section-title reveal reveal-delay-1">Why RADYK</h2>
+            <p class="section-desc reveal reveal-delay-2">Built for developers who care about code quality, not
+                marketing fluff.</p>
+
+            <div class="features-grid reveal reveal-delay-3">
+                <div class="feature-item">
+                    <h4>Double Integrity</h4>
+                    <p>SHA256 for download verification, HMAC-SHA256 for boot-time file integrity. Two layers of
+                        protection.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Zero Bloat</h4>
+                    <p>No jQuery. No Bootstrap. Clean PHP, minimal JS, native CSS. Every file earns its place.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Extension Ready</h4>
+                    <p>Modular architecture with namespace isolation, auto-discovery, and per-extension integrity
+                        tokens.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>PHP 8.2+</h4>
+                    <p>Modern PHP with strict types, enums, readonly properties, and first-class namespaces.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Multisite Safe</h4>
+                    <p>Network-wide activation support. Per-site isolation with shared configuration when you need it.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h4>GitHub Powered</h4>
+                    <p>Releases, updates, and directory sync all via GitHub Actions. Zero server costs, zero
+                        maintenance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CODE PREVIEW -->
+    <section class="code-section">
+        <div class="container">
+            <div class="section-label reveal">Developer Experience</div>
+            <h2 class="section-title reveal reveal-delay-1">Clean by Default</h2>
+            <p class="section-desc reveal reveal-delay-2">Extensions ship with namespace isolation, auto-discovery, and
+                built-in integrity verification.</p>
+
+            <div class="code-block reveal reveal-delay-3">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <span>register.json</span>
+                </div>
+                <div class="code-body">
+                    <pre>{
+  <span class="str">"name"</span>: <span class="str">"seo-suite"</span>,
+  <span class="str">"label"</span>: <span class="str">"SEO Suite"</span>,
+  <span class="str">"version"</span>: <span class="str">"2.1.0"</span>,
+  <span class="str">"integrity"</span>: <span class="str">"hmac-sha256:..."</span>,
+  <span class="str">"settings"</span>: {
+    <span class="str">"namespace"</span>: <span class="str">"SeoSuite\\"</span>,
+    <span class="str">"autodiscover"</span>: <span class="kw">true</span>,
+    <span class="str">"network"</span>: <span class="kw">true</span>
+  }
+}</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="reveal">Start Building</h2>
+            <p class="reveal reveal-delay-1">RADYK is open source. Clone it, extend it, ship it.</p>
+            <div class="cta-actions reveal reveal-delay-2">
+                <a href="https://github.com/rahendz/radlabs" class="btn-primary">
+                    View on GitHub
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+                <a href="https://rahendz.github.io/radlabs/extensions/" class="btn-secondary">Browse Extensions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-left">&copy; 2026 RADLabs</div>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/rahendz/radlabs">GitHub</a></li>
+                    <li><a href="https://rahendz.github.io/radlabs/extensions/">Extensions</a></li>
+                    <li><a href="https://github.com/rahendz/radlabs/blob/main/LICENSE">License</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCROLL REVEAL -->
+    <script>
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        } else {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+        }
+    </script>
+
+</body>
+
+</html>
